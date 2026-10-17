@@ -306,7 +306,16 @@ def write_csv_merged(specs: List[RAMSpec], configs: List[CellConfig], input_path
 
 
 def main():
-    parser = argparse.ArgumentParser(description='RAM CELL Generator')
+    parser = argparse.ArgumentParser(
+        description='RAM CELL Generator',
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog=(
+            'Run from the cellgen repository (Python 3.12 recommended):\n'
+            '  uv run cellgen --help\n'
+            '  uv run cellgen input.csv --out-dir output\n'
+            'Replace input.csv with your RAM specification table.'
+        ),
+    )
     parser.add_argument('csv_file', help='Input CSV')
     parser.add_argument('--out-dir', default=None,
                        help='Output directory (default: same as input file)')
